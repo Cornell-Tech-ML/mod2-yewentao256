@@ -28,7 +28,6 @@ class Linear(minitorch.Module):
         Returns:
             minitorch.Tensor: Output tensor of shape (batch_size, out_size)
         """
-        # 
         batch_size = x.shape[0]
         in_size = x.shape[1]
         out_size = self.weights.value.shape[1]
@@ -39,7 +38,7 @@ class Linear(minitorch.Module):
         mul = x_expanded * weights_expanded
 
         # (batch_size, out_size)
-        output = mul.sum(dim=1).view(batch_size, out_size) 
+        output = mul.sum(dim=1).view(batch_size, out_size)
         output = output + self.bias.value
         return output
 
