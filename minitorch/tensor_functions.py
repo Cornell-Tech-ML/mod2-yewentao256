@@ -266,6 +266,8 @@ class Permute(Function):
         order_list = ctx.saved_values[0]
         # Invert the permutation
         inverse_order = [0] * len(order_list)
+        # eg: order_list = [1, 2, 0] CHW -> WCH
+        # We want WCH -> CHW, so inverse_order = [2, 0, 1]
         for i, o in enumerate(order_list):
             inverse_order[o] = i
         # Same as sum, returning a useless tensor grad for `order`
